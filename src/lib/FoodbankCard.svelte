@@ -1,7 +1,7 @@
-<script lang="ts">
+<script>
   const { fb, isOpen, onRequest } = $props();
 
-  const dayMap: Record<string, string> = {
+  const dayMap = {
     M: "Mon",
     T: "Tue",
     W: "Wed",
@@ -11,8 +11,8 @@
     Su: "Sun",
   };
 
-  function expandDays(token: string): string[] {
-    const out: string[] = [];
+  function expandDays(token) {
+    const out = [];
     let i = 0;
     while (i < token.length) {
       const two = token.slice(i, i + 2);
@@ -28,7 +28,7 @@
     return out;
   }
 
-  function to12h(time: string): string {
+  function to12h(time) {
     if (!time.includes(":")) {
       const h = Number(time) || 0;
       const hr = h % 12 === 0 ? 12 : h % 12;
@@ -43,7 +43,7 @@
     return `${hr}:${m} ${mer}`;
   }
 
-  function formatHours(hours?: string): string {
+  function formatHours(hours) {
     if (!hours) return "Hours not listed";
     return hours
       .split("|")
@@ -69,7 +69,7 @@
   let hoursDisplay = $derived(formatHours(fb.hours));
 </script>
 
-<article class="card" role="article">
+<article class="card">
   <div class="top">
     <div class="content">
       <h4>{fb.name}</h4>

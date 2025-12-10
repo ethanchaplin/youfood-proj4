@@ -1,30 +1,4 @@
-export type FoodItem = {
-  id: string
-  name: string
-  max: number
-  unit?: string
-}
-
-export type Foodbank = {
-  id: string
-  name: string
-  address: string
-  description: string
-  hours?: string
-  distance?: string
-  logoColor?: string
-  items: FoodItem[]
-}
-
-export type Address = {
-  id: string
-  label: string
-  line1: string
-  city: string
-  notes?: string
-}
-
-export const foodbanks: Foodbank[] = [
+export const foodbanks = [
   {
     id: 'fb-1',
     name: 'Church of the Advent Open Door Food Pantry',
@@ -139,7 +113,7 @@ export const foodbanks: Foodbank[] = [
   },
 ]
 
-export const userAddresses: Address[] = [
+export const userAddresses = [
   {
     id: 'addr-home',
     label: 'Home',

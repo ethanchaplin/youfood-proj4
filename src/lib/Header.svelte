@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
   const { clickLogo } = $props();
 </script>
 

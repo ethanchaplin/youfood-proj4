@@ -1,21 +1,18 @@
-<script lang="ts">
+<script>
   import Header from "./lib/Header.svelte";
   import FoodbankCard from "./lib/FoodbankCard.svelte";
-  import type { Foodbank, FoodItem } from "./lib/data";
-  import { foodbanks, addresses, requests } from "./lib/stores";
+  import { foodbanks, addresses, requests } from "./lib/stores.js";
   import { onDestroy } from "svelte";
 
-  type Step = "list" | "items" | "confirm" | "done";
-
-  let step: Step = $state("list");
-  let chosenFoodbank: Foodbank | null = $state(null);
-  let selectedFoodbankId: string | null = $state(null);
-  let selectedAddressId: string | null = $state(null);
-  let quantities: Record<string, number> = $state({});
+  let step = $state("list");
+  let chosenFoodbank = $state(null);
+  let selectedFoodbankId = $state(null);
+  let selectedAddressId = $state(null);
+  let quantities = $state({});
   let name = $state("");
   let phone = $state("");
   let notes = $state("");
-  let confirmationId: string | null = $state(null);
+  let confirmationId = $state(null);
   let orderAhead = $state(false);
   let lastWasScheduled = $state(false);
 
@@ -24,18 +21,18 @@
 
   const dayTokens = ["Su", "M", "T", "W", "Th", "F", "Sa"]; // Sunday index 0
 
-  const toMinutes = (t: string) => {
+  const toMinutes = (t) => {
     const [hStr, mStr = "0"] = t.split(":");
     const h = parseInt(hStr, 10) || 0;
     const m = parseInt(mStr, 10) || 0;
     return h * 60 + m;
   };
 
-  const parseDayTokens = (hours: string) => {
+  const parseDayTokens = (hours) => {
     return hours.match(/Su|Sa|Th|M|T|W|F/g) ?? [];
   };
 
-  const isOpenNow = (hours?: string) => {
+  const isOpenNow = (hours) => {
     if (!hours) return true;
     const now = new Date();
     const day = dayTokens[now.getDay()];
@@ -65,11 +62,11 @@
     selectedAddressId = selectedAddressId ?? $addresses[0]?.id ?? null;
   });
 
-  const viewFoodbank = (id: string) => {
+  const viewFoodbank = (id) => {
     const fb = $foodbanks.find((f) => f.id === id);
     if (!fb) return;
     chosenFoodbank = fb;
-    const next: Record<string, number> = {};
+    const next = {};
     chosenFoodbank.items.forEach((item) => {
       next[item.id] = quantities[item.id] ?? 0;
     });
@@ -79,7 +76,7 @@
     step = "items";
   };
 
-  const setQty = (item: FoodItem, value: number) => {
+  const setQty = (item, value) => {
     const clamped = Math.max(0, Math.min(item.max, value));
     quantities[item.id] = clamped;
   };
@@ -122,7 +119,7 @@
     const now = new Date();
     const status = orderAhead ? "scheduled" : "pending";
     const rec = {
-      id: String(Date.now()) + Math.floor(Math.random() * 1000),
+      id: Date.now().toString() + Math.floor(Math.random() * 1000),
       foodbankId: chosenFoodbank.id,
       foodbankName: chosenFoodbank.name,
       name: name || "Anonymous",
@@ -156,7 +153,7 @@
     lastWasScheduled = false;
   };
 
-  const addressSummary = (id: string | null) => {
+  const addressSummary = (id) => {
     const a = $addresses.find((addr) => addr.id === id);
     if (!a) return "Select an address";
     return `${a.label}: ${a.line1}, ${a.city}${a.notes ? " • " + a.notes : ""}`;
@@ -308,7 +305,8 @@
             rows={3}
             bind:value={notes}
             placeholder="Dietary or access notes"
-          />
+          >
+          </textarea>
         </div>
       </div>
 
