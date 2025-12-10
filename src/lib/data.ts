@@ -1,0 +1,163 @@
+export type FoodItem = {
+  id: string
+  name: string
+  max: number
+  unit?: string
+}
+
+export type Foodbank = {
+  id: string
+  name: string
+  address: string
+  description: string
+  hours?: string
+  distance?: string
+  logoColor?: string
+  items: FoodItem[]
+}
+
+export type Address = {
+  id: string
+  label: string
+  line1: string
+  city: string
+  notes?: string
+}
+
+export const foodbanks: Foodbank[] = [
+  {
+    id: 'fb-1',
+    name: 'Church of the Advent Open Door Food Pantry',
+    address: '2366 Kemper Lane 45206',
+    description: '',
+    hours: 'W 9:30–12:00',
+    distance: '0.6 mi',
+    logoColor: '#ff6b6b',
+    items: [
+      { id: 'pantry-box', name: 'Pantry staples box', max: 1 },
+      { id: 'produce', name: 'Fresh produce bag', max: 1 },
+      { id: 'canned', name: 'Canned goods (assorted)', max: 6 },
+    ],
+  },
+  {
+    id: 'fb-2',
+    name: 'Mercy Neighborhood Ministries Food Pantry',
+    address: '1602 Madison Road',
+    description: '',
+    hours: 'MTW 9:00–11:30',
+    distance: '1.2 mi',
+    logoColor: '#4dabf7',
+    items: [
+      { id: 'soup', name: 'Prepared soup (1 qt)', max: 2 },
+      { id: 'bread', name: 'Bread loaf', max: 2 },
+      { id: 'eggs', name: 'Eggs (dozen)', max: 1 },
+    ],
+  },
+  {
+    id: 'fb-3',
+    name: 'Our Daily Bread Soup Kitchen',
+    address: '1730 Race Street',
+    description: '',
+    hours: 'MTWThF 08:30–11:45',
+    distance: '2.4 mi',
+    logoColor: '#8dca6b',
+    items: [
+      { id: 'hot-meal', name: 'Hot meal', max: 4 },
+      { id: 'sandwich', name: 'Sandwich pack', max: 4 },
+      { id: 'snack', name: 'Snack kit', max: 4 },
+    ],
+  },
+  {
+    id: 'fb-4',
+    name: 'Queen City Food Kitchen and Choice Pantry',
+    address: '2386 Kemper Lane',
+    description: '',
+    hours: 'TWTh 12:30-14:00 | Sa 12:00-13:00 | Su 14:00-15:00',
+    distance: '2.7 mi',
+    logoColor: '#3bd8c4ff',
+    items: [
+      { id: 'fresh', name: 'Fresh produce bag', max: 2 },
+      { id: 'dry', name: 'Dry goods bag', max: 2 },
+      { id: 'protein', name: 'Protein pack', max: 1 },
+    ],
+  },
+  {
+    id: 'fb-5',
+    name: 'Rose Garden Mission – St. Francis Food Pantry',
+    address: '2040 Madison Avenue',
+    description: '',
+    hours: 'MTWTh 11:00–16:00',
+    distance: '0.6 mi',
+    logoColor: '#ff6b6b',
+    items: [
+      { id: 'frozen', name: 'Frozen meals', max: 3 },
+      { id: 'hygiene', name: 'Hygiene kit', max: 2 },
+      { id: 'diapers', name: 'Diapers pack', max: 2 },
+    ],
+  },
+  {
+    id: 'fb-6',
+    name: 'St. Andrew’s Episcopal Church Choice Food Pantry',
+    address: '1809 Rutland Avenue',
+    description: '',
+    hours: 'MT 13:00–14:00',
+    distance: '1.2 mi',
+    logoColor: '#4dabf7',
+    items: [
+      { id: 'pantry-box', name: 'Pantry staples box', max: 1 },
+      { id: 'fruit', name: 'Fruit bag', max: 1 },
+      { id: 'veg', name: 'Vegetable bag', max: 1 },
+    ],
+  },
+  {
+    id: 'fb-7',
+    name: 'St. Francis Seraph Ministries',
+    address: '1615 Republic Street',
+    description: '',
+    hours: 'MTWThF 07:30–8:30 | MTWThF 16:30-17:30',
+    distance: '2.4 mi',
+    logoColor: '#8dca6b',
+    items: [
+      { id: 'breakfast', name: 'Breakfast tray', max: 2 },
+      { id: 'dinner', name: 'Dinner plate', max: 2 },
+      { id: 'dessert', name: 'Dessert', max: 2 },
+    ],
+  },
+  {
+    id: 'fb-8',
+    name: 'St. George Food Pantry',
+    address: '2554 Dennis Street',
+    description: '',
+    hours: 'MT 18:00-19:30',
+    distance: '2.7 mi',
+    logoColor: '#3bd8c4ff',
+    items: [
+      { id: 'dry', name: 'Dry goods bag', max: 2 },
+      { id: 'protein', name: 'Protein pack', max: 1 },
+      { id: 'hygiene', name: 'Hygiene kit', max: 1 },
+    ],
+  },
+]
+
+export const userAddresses: Address[] = [
+  {
+    id: 'addr-home',
+    label: 'Home',
+    line1: '742 Evergreen Terrace',
+    city: 'Springfield, USA',
+    notes: 'Ring bell; elevator available',
+  },
+  {
+    id: 'addr-work',
+    label: 'Work',
+    line1: '123 Market Street, Suite 200',
+    city: 'Springfield, USA',
+    notes: 'Front desk closes at 6pm',
+  },
+  {
+    id: 'addr-friend',
+    label: 'Friend',
+    line1: '19 Pine Ave',
+    city: 'Springfield, USA',
+  },
+]
