@@ -10,8 +10,8 @@
     Sa: "Sat",
     Su: "Sun",
   };
-
-  function expandDays(token) {
+  // AI GENERATED FUNCTIONS TO HELP PARSE FOOD BANK HOURS
+  const expandDays = (token) => {
     const out = [];
     let i = 0;
     while (i < token.length) {
@@ -26,9 +26,9 @@
       }
     }
     return out;
-  }
+  };
 
-  function to12h(time) {
+  const to12h = (time) => {
     if (!time.includes(":")) {
       const h = Number(time) || 0;
       const hr = h % 12 === 0 ? 12 : h % 12;
@@ -41,9 +41,9 @@
     const hr = h % 12 === 0 ? 12 : h % 12;
     const mer = h >= 12 ? "PM" : "AM";
     return `${hr}:${m} ${mer}`;
-  }
+  };
 
-  function formatHours(hours) {
+  const formatHours = (hours) => {
     if (!hours) return "Hours not listed";
     return hours
       .split("|")
@@ -64,8 +64,8 @@
         return `${label} · ${timeRange}`;
       })
       .join(" / ");
-  }
-
+  };
+  // FINISH AI GENERATED FUNCTIONS
   let hoursDisplay = $derived(formatHours(fb.hours));
 </script>
 
