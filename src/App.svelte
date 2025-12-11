@@ -193,7 +193,7 @@
             <FoodbankCard
               {fb}
               isOpen={true}
-              onRequest={() => viewFoodbank("fb-8")}
+              onRequest={() => viewFoodbank(fb.id)}
             />
           {/each}
         </div>
